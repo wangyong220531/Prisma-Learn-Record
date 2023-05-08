@@ -3,7 +3,10 @@ import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient()
 
 async function main() {
-    const usersWithPosts = await prisma.user.findMany({
+    const usersWithPosts = await prisma.user.findUnique({
+        where: {
+            email: "wangyong220531@gmail.com"
+        },
         include: {
             posts: true
         }
